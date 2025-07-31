@@ -99,7 +99,7 @@ fun TopHeader(totalPerPerson : Double = 134.0){
                 fontWeight = FontWeight.Medium,
                 fontSize = 15.sp
             )
-            Text(text = "$$total",
+            Text(text = "£$total",
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.ExtraBold
             )
@@ -249,7 +249,7 @@ fun BillForm(modifier: Modifier = Modifier,
                         Spacer(modifier = modifier.height(14.dp))
                         Slider(value = sliderPositionState.value, onValueChange = { newVal ->
                             sliderPositionState.value = newVal
-                            Log.d("TipCalc","${newVal}")
+
 
                             tipAmountState.value = calcTotalTip(totalBillState.value.toDouble(), tipPercent)
 
