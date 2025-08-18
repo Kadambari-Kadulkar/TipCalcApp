@@ -41,6 +41,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
@@ -100,6 +101,7 @@ fun TopHeader(totalPerPerson : Double = 134.0){
                 fontSize = 15.sp
             )
             Text(text = "£$total",
+                modifier = Modifier.testTag("TotalPerPerson"),
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.ExtraBold
             )
@@ -217,7 +219,7 @@ fun BillForm(modifier: Modifier = Modifier,
                     Row (modifier =  Modifier.padding(horizontal = 3.dp),
                         horizontalArrangement = Arrangement.End) {
 
-                        RoundIconButton(modifier = modifier.align(Alignment.CenterVertically).padding(start = 1.dp, top = 8.dp),
+                        RoundIconButton(modifier = modifier.align(Alignment.CenterVertically).padding(start = 1.dp, top = 8.dp).testTag("RemoveButton"),
                             imageVector = Icons.Default.Remove,
                             onClick = {
                             //Log.d("RoundIconButton","Remove clicked")
@@ -227,7 +229,7 @@ fun BillForm(modifier: Modifier = Modifier,
                             })
                         Text("${splitByState.value}", Modifier.padding(start = 9.dp, end = 9.dp).align(Alignment.CenterVertically))
 
-                        RoundIconButton(modifier = modifier.align(Alignment.CenterVertically).padding(start = 1.dp, top = 8.dp),
+                        RoundIconButton(modifier = modifier.align(Alignment.CenterVertically).padding(start = 1.dp, top = 8.dp).testTag("AddButton"),
                             imageVector = Icons.Default.Add, onClick = {
                             //Log.d("RoundIconButton","Add clicked")
                                 if (splitByState.value < range.last){
@@ -242,7 +244,7 @@ fun BillForm(modifier: Modifier = Modifier,
                 Row(modifier = Modifier.padding(horizontal = 3.dp, vertical = 12.dp)){
                     Text(text = stringResource(R.string.tip), modifier = modifier.align(Alignment.CenterVertically))
                     Spacer(modifier = Modifier.width(200.dp))
-                    Text(text = "$${tipAmountState.value}", modifier = Modifier.align(Alignment.CenterVertically))
+                    Text(text = "£${tipAmountState.value}", modifier = Modifier.align(Alignment.CenterVertically))
                 }
                     Column ( verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally){
                         Text(text= "${tipPercent}%")
@@ -255,7 +257,7 @@ fun BillForm(modifier: Modifier = Modifier,
 
                             totalPerPersonState.value = calculateTotalPerPerson(totalBillState.value.toDouble(), splitByState.value, tipPercent)
 
-                        }, modifier = Modifier.padding(start = 16.dp, end = 16.dp),  onValueChangeFinished = {
+                        }, modifier = Modifier.padding(start = 16.dp, end = 16.dp).testTag("TipSlider"),  onValueChangeFinished = {
 
                         })
 
