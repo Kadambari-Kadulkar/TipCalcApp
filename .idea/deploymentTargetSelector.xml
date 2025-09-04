@@ -19,9 +19,6 @@
       <SelectionState runConfigName="TipCalculatorAppTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="appLaunches_displaysHeader_andBillInput()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="enteringBill_displaysSplitRowAndTipSection()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>

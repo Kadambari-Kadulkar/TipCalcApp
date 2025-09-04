@@ -10,6 +10,10 @@ fun calculateTotalPerPerson(
     splitBy: Int,
     tipPercent: Int
 ):Double{
+    if (totalBill <= 0) return 0.0  // no bill, nothing to split
+
+    val safeSplitBy = if (splitBy <= 0) 1 else splitBy  // fallback to 1
+
     val bill: Double = calcTotalTip(totalBill, tipPercent) + totalBill
-    return (bill / splitBy)
+    return bill / safeSplitBy
 }
